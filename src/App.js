@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+  state = {
+    nama: "lian",
+    sekolah: "purwadhika",
+    number: 0
+  }
+
+  gantinama = () => { this.setState({ nama: "andi", sekolah: "pwd" }) }
+  tambah = () => { this.setState({ number: this.state.number + 1 }) }
+  kurang = () => { this.setState({ number: this.state.number - 1 }) }
+
+  render() {
+    return (
+      <div>
+        <div>
+          {this.state.number}
+          <div>                                                                                                                                                                                                                                                                                                                        nbbv>
+            <button onClick={this.tambah}>+</button>
+            <button onClick={this.kurang}>-</button>
+          </div>
+        </div>
+      </div>
+    )
+  }
 }
+
 
 export default App;
