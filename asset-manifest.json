@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/latihan-react/static/css/main.34de6062.chunk.css",
+    "main.js": "/latihan-react/static/js/main.4e13563d.chunk.js",
+    "main.js.map": "/latihan-react/static/js/main.4e13563d.chunk.js.map",
+    "runtime-main.js": "/latihan-react/static/js/runtime-main.4fca9940.js",
+    "runtime-main.js.map": "/latihan-react/static/js/runtime-main.4fca9940.js.map",
+    "static/css/2.b0bb7f2c.chunk.css": "/latihan-react/static/css/2.b0bb7f2c.chunk.css",
+    "static/js/2.520ff597.chunk.js": "/latihan-react/static/js/2.520ff597.chunk.js",
+    "static/js/2.520ff597.chunk.js.map": "/latihan-react/static/js/2.520ff597.chunk.js.map",
+    "index.html": "/latihan-react/index.html",
+    "precache-manifest.837acbfec143d2d51679e4f968d6f460.js": "/latihan-react/precache-manifest.837acbfec143d2d51679e4f968d6f460.js",
+    "service-worker.js": "/latihan-react/service-worker.js",
+    "static/css/2.b0bb7f2c.chunk.css.map": "/latihan-react/static/css/2.b0bb7f2c.chunk.css.map",
+    "static/css/main.34de6062.chunk.css.map": "/latihan-react/static/css/main.34de6062.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4fca9940.js",
+    "static/css/2.b0bb7f2c.chunk.css",
+    "static/js/2.520ff597.chunk.js",
+    "static/css/main.34de6062.chunk.css",
+    "static/js/main.4e13563d.chunk.js"
+  ]
+}
