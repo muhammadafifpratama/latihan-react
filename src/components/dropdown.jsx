@@ -1,27 +1,36 @@
-import React, { useState } from 'react';
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import React, { Component } from 'react';
+import { DropdownToggle, DropdownMenu, DropdownItem, ButtonDropdown } from 'reactstrap';
 
-const Example = (props) => {
-    const [dropdownOpen, setDropdownOpen] = useState(false);
+class Example extends Component {
 
-    const toggle = () => setDropdownOpen(prevState => !prevState);
+    render() {
+        return (
+            Example = (props) => {
+                return (
+                    <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={() => this.setState({ dropdownOpen: !this.state.dropdownOpen })}>
+                        <DropdownToggle caret>
+                            Dropdown
+            </DropdownToggle>
+                        <DropdownMenu>
+                            <DropdownItem>{props.sembarang} </DropdownItem>
+                        </DropdownMenu>
+                    </ButtonDropdown>
+                )
+            })
+    }
 
-    return (
-        <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-            <DropdownToggle caret>
-                Dropdown
+    contoh = (props) => {
+        return (
+            <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={() => this.setState({ dropdownOpen: !this.state.dropdownOpen })}>
+                <DropdownToggle caret>
+                    Dropdown
         </DropdownToggle>
-            <DropdownMenu>
-                <DropdownItem header>Header</DropdownItem>
-                <DropdownItem>Some Action</DropdownItem>
-                <DropdownItem disabled>Action (disabled)</DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>Foo Action</DropdownItem>
-                <DropdownItem>Bar Action</DropdownItem>
-                <DropdownItem>Quo Action</DropdownItem>
-            </DropdownMenu>
-        </Dropdown>
-    );
+                <DropdownMenu>
+                    <DropdownItem>{props.sembarang} </DropdownItem>
+                </DropdownMenu>
+            </ButtonDropdown>
+        )
+    }
 }
 
 export default Example;
