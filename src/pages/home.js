@@ -1,12 +1,12 @@
 import React, { Component } from "react"
 import Axios from "axios"
-// import { Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
 import { Table, Form, Button } from 'reactstrap';
 
 class Home extends Component {
 
     state = {
-        data: []
+        data: [],
+        selectedid: null
     }
 
     componentDidMount() {
@@ -25,19 +25,33 @@ class Home extends Component {
         Axios.get("http://localhost:2000/users")
     }
 
-    contoh = () => {
-
+    editdata = (id) => {
+        this.setState({ selectedid: id })
+        console.log(id)
     }
 
     renderUSerData = () => {
         return this.state.data.map((val) => {
-            return (
-
+            if (this.state.selectedid === val.id) {
+                return (
+                    <tr key={val.id}>
+                        <th scope="row">{val.id}</th>
+                        <td><input type="text" ref="first_name" placeholder="First Name" ></input></td>
+                        <td><input type="text" ref="last_name" placeholder="Last Name" ></input></td>
+                        <td><input type="text" ref="email" placeholder="Email" ></input></td>
+                        <td><Button color='success' onClick={() => this.confirm(val.id)}>confirm</Button></td>
+                        <td><Button color="secondary" onClick={() => this.setState({ selectedid: null })}>Cancel</Button></td>
+                    </tr>
+                )
+            }
+            else return (
                 <tr>
                     <th scope="row">{val.id}</th>
                     <td>{val.first_name}</td>
                     <td>{val.last_name}</td>
                     <td>{val.email}</td>
+                    <td><Button color='danger' onClick={() => this.deleteData(val.id)}>Delete</Button></td>
+                    <td><Button color="warning" onClick={() => this.editdata(val.id)}>edit</Button></td>
                 </tr>
                 // <Row>
                 //     <Col sm="6">
@@ -50,6 +64,44 @@ class Home extends Component {
                 // </Row>
             )
         })
+    }
+
+    deleteData = (id) => {
+        Axios.delete(`http://localhost:2000/users/${id}`)
+            .then((res) => {
+                // console.log(res.data)
+                // this.setState({data: res.data})
+                Axios.get('http://localhost:2000/users')
+                    .then((res) => {
+                        console.log(res.data)
+                        this.setState({ data: res.data })
+                    })
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }
+
+    confirm = (id) => {
+        var namaDepan = this.refs.first_name.value
+        var namaBelakang = this.refs.last_name.value
+        var email = this.refs.email.value
+        Axios.put(`http://localhost:2000/users/${id}`, {
+            first_name: namaDepan,
+            last_name: namaBelakang,
+            email: email,
+        })
+            .then((res) => {
+                Axios.get('http://localhost:2000/users')
+                    .then((res) => {
+                        console.log(res.data)
+                        this.setState({ data: res.data, selectedid: null })
+                        this.renderUSerData()
+                    })
+            })
+            .catch((err) => {
+                console.log(err)
+            })
     }
 
     submitData = () => {
@@ -68,8 +120,9 @@ class Home extends Component {
                 Axios.get("http://localhost:2000/users")
                     .then((res) => {
                         this.setState({ data: res.data })
+                        console.log(this.state.data)
                     })
-                console.log(this.state.data)
+
             })
             .catch((err) => {
 
