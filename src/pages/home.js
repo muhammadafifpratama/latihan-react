@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import Axios from "axios"
-import { Table, Form, Button } from 'reactstrap';
+import { Table, Form, Button, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem, Card, CardTitle, Row, Col } from 'reactstrap';
 
 class Home extends Component {
 
@@ -21,6 +21,46 @@ class Home extends Component {
             })
     }
 
+    renderCard = () => {
+        const Kartu = (props) => {
+            // console.log(props)
+            return (
+                <Row>
+                    <Col sm="6">
+                        <Card body>
+                            <CardTitle>{props.sembarang}</CardTitle>
+                        </Card>
+                    </Col>
+                </Row>
+            );
+        };
+        return this.state.data.map((val) => {
+            return (
+                <Kartu sembarang={val.first_name} />
+            )
+        })
+    }
+
+    renderdropdown = () => {
+        const Bawah = (props) => {
+            console.log(props)
+            return (
+                <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={() => this.setState({ dropdownOpen: !this.state.dropdownOpen })}>
+                    <DropdownToggle caret>
+                        Button Dropdown
+                  </DropdownToggle>
+                    <DropdownMenu>
+                        <DropdownItem>{props.sembarang}</DropdownItem>
+                    </DropdownMenu>
+                </ButtonDropdown>
+            );
+        };
+        return this.state.data.map((val) => {
+            return (
+                <Bawah sembarang={val.first_name} />
+            )
+        })
+    }
     componentDidUpdate() {
         Axios.get("http://localhost:2000/users")
     }
@@ -29,6 +69,7 @@ class Home extends Component {
         this.setState({ selectedid: id })
         console.log(id)
     }
+
 
     renderUSerData = () => {
         return this.state.data.map((val) => {
@@ -133,6 +174,16 @@ class Home extends Component {
     render() {
         return (
             <div>
+                {this.renderdropdown()}
+                {/* <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={() => this.setState({ dropdownOpen: !this.state.dropdownOpen })}>
+                    <DropdownToggle caret>
+                        Button Dropdown
+                  </DropdownToggle>
+                    <DropdownMenu>
+                        <DropdownItem>{this.renderCard()}</DropdownItem>
+                    </DropdownMenu>
+                </ButtonDropdown> */}
+
                 <Table>
                     <thead>
                         <tr>
@@ -160,7 +211,7 @@ class Home extends Component {
                         Submit
                   </Button>
                 </Form>
-
+                {this.renderdropdown()}
             </div >
         )
     }
