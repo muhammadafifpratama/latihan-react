@@ -1,36 +1,23 @@
-import React, { Component } from 'react';
-import { DropdownToggle, DropdownMenu, DropdownItem, ButtonDropdown } from 'reactstrap';
 
-class Example extends Component {
+import React, { useState } from 'react';
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
-    render() {
-        return (
-            Example = (props) => {
-                return (
-                    <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={() => this.setState({ dropdownOpen: !this.state.dropdownOpen })}>
-                        <DropdownToggle caret>
-                            Dropdown
-            </DropdownToggle>
-                        <DropdownMenu>
-                            <DropdownItem>{props.sembarang} </DropdownItem>
-                        </DropdownMenu>
-                    </ButtonDropdown>
-                )
-            })
-    }
+const Example = (props) => {
+    const [dropdownOpen, setDropdownOpen] = useState(false);
 
-    contoh = (props) => {
-        return (
-            <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={() => this.setState({ dropdownOpen: !this.state.dropdownOpen })}>
-                <DropdownToggle caret>
-                    Dropdown
+    const toggle = () => setDropdownOpen(prevState => !prevState);
+
+    return (
+        <Dropdown isOpen={dropdownOpen} toggle={toggle}>
+            <DropdownToggle caret>
+                List
         </DropdownToggle>
-                <DropdownMenu>
-                    <DropdownItem>{props.sembarang} </DropdownItem>
-                </DropdownMenu>
-            </ButtonDropdown>
-        )
-    }
+            <DropdownMenu>
+                <DropdownItem header>First Name</DropdownItem>
+                {props.x}
+            </DropdownMenu>
+        </Dropdown>
+    );
 }
 
 export default Example;

@@ -1,6 +1,8 @@
 import React, { Component } from "react"
 import Axios from "axios"
 import { Table, Form, Button, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem, Card, CardTitle, Row, Col } from 'reactstrap';
+import Kartu from '../components/card'
+import Example from '../components/dropdown'
 
 class Home extends Component {
 
@@ -42,19 +44,6 @@ class Home extends Component {
     }
 
     renderdropdown = () => {
-        const Bawah = (props) => {
-            console.log(props)
-            return (
-                <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={() => this.setState({ dropdownOpen: !this.state.dropdownOpen })}>
-                    <DropdownToggle caret>
-                        Button Dropdown
-                  </DropdownToggle>
-                    <DropdownMenu>
-                        <DropdownItem>{props.sembarang}</DropdownItem>
-                    </DropdownMenu>
-                </ButtonDropdown>
-            );
-        };
         return this.state.data.map((val) => {
             return (
                 <DropdownItem>{val.first_name}</DropdownItem>
@@ -174,7 +163,7 @@ class Home extends Component {
     render() {
         return (
             <div>
-                {this.renderdropdown()}
+                <Example x={this.renderdropdown()}></Example>
                 {/* <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={() => this.setState({ dropdownOpen: !this.state.dropdownOpen })}>
                     <DropdownToggle caret>
                         Button Dropdown
@@ -211,7 +200,6 @@ class Home extends Component {
                         Submit
                   </Button>
                 </Form>
-                {this.renderdropdown()}
             </div >
         )
     }
