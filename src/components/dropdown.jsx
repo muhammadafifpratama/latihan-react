@@ -1,23 +1,20 @@
-
-import React, { useState } from 'react';
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import React, { useState, } from 'react';
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem, ButtonDropdown } from 'reactstrap';
 
 const Example = (props) => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
     const toggle = () => setDropdownOpen(prevState => !prevState);
-
     return (
-        <Dropdown isOpen={dropdownOpen} toggle={toggle}>
+        <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
             <DropdownToggle caret>
-                List
+                Dropdown
         </DropdownToggle>
             <DropdownMenu>
-                <DropdownItem header>First Name</DropdownItem>
-                {props.x}
+                <DropdownItem>{props.sembarang} </DropdownItem>
             </DropdownMenu>
-        </Dropdown>
-    );
+        </ButtonDropdown>
+    )
 }
 
 export default Example;
