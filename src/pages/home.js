@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import Axios from "axios"
+import { connect } from "react-redux"
 import { Table, Form, Button, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem, Card, CardTitle, Row, Col } from 'reactstrap';
 
 class Home extends Component {
@@ -171,6 +172,7 @@ class Home extends Component {
 
 
     render() {
+        console.log(this.props.count)
         return (
             <div>
                 {/* {this.renderdropdown()} */}
@@ -214,4 +216,10 @@ class Home extends Component {
     }
 }
 
-export default Home
+const mapstatetoprops = (state) => {
+    return {
+        count: state.count
+    }
+}
+
+export default connect(mapstatetoprops)(Home)
