@@ -3,6 +3,8 @@ import { Route } from "react-router-dom"
 import home from "./pages/home"
 import nothome from "./pages/nothome"
 import Navbar from "./components/navbar"
+import carousel from "./pages/carousel"
+import login from "./pages/login"
 
 class App extends Component {
 
@@ -10,8 +12,10 @@ class App extends Component {
     return (
       <div>
         <Navbar />
-        <Route path="/" component={home} exact />
+        <Route path="./src/pages/home" component={home} exact />
         <Route path="/not-home" component={nothome} exact />
+        <Route path="/carousel" component={carousel} exact />
+        <Route path="/login" component={login} exact />
       </div>
     )
   }
