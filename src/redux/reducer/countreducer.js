@@ -2,7 +2,7 @@ const initial_state = {
     count: 100
 }
 
-export const countreducer = (state = initial_state, action) => {
+const countreducer = (state = initial_state, action) => {
     switch (action.type) {
         case "plus":
 
@@ -15,3 +15,5 @@ export const countreducer = (state = initial_state, action) => {
             return state
     }
 }
+
+export default countreducer

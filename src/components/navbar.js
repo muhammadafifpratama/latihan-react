@@ -12,23 +12,53 @@ import {
     DropdownMenu,
     DropdownItem
 } from 'reactstrap';
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { logout } from '../redux/action'
 
 
 
-const Confused = (props) => {
+const Navabar = (props) => {
     const [isopen, setisopen] = useState(false);
 
     const toggle = () => setisopen(!isopen);
 
     return (
         <div>
-            <Navbar color="faded" light expand="md">
-                <table><NavbarBrand href="/">puseeeeeng</NavbarBrand></table>
+            <Navbar color="faded" light expand="md" className="justify-content-end nav" >
+                <Link className='navbar-brand' to='./' style={{ color: 'white' }}>
+                    home
+                </Link>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={!isopen} navbar>
-                    <Nav navbar>
-
-                        <NavItem>
+                    <Nav className="ml-auto" navbar>
+                        <UncontrolledDropdown nav inNavbar>
+                            <DropdownToggle nav caret>
+                                {props.role ? props.username : "Options"}
+                            </DropdownToggle>
+                            {
+                                props.role
+                                    ?
+                                    <DropdownMenu right>
+                                        <DropdownItem onClick={props.logout}>
+                                            Log Out
+                            </DropdownItem>
+                                    </DropdownMenu>
+                                    :
+                                    <DropdownMenu right>
+                                        <Link to='/login'>
+                                            <DropdownItem>
+                                                Login
+                            </DropdownItem>
+                                        </Link>
+                                        <DropdownItem divider />
+                                        <DropdownItem>
+                                            Register
+                            </DropdownItem>
+                                    </DropdownMenu>
+                            }
+                        </UncontrolledDropdown>
+                        {/* <NavItem>
                             <NavLink href="/">home</NavLink>
                         </NavItem>
                         <NavItem>
@@ -39,29 +69,20 @@ const Confused = (props) => {
                         </NavItem>
                         <NavItem>
                             <NavLink href="/login   ">login</NavLink>
-                        </NavItem>
+                        </NavItem> */}
                     </Nav>
-                    {/* <UncontrolledDropdown nav inNavbar>
-                        <DropdownToggle nav caret>
-                            Options
-              </DropdownToggle>
-                        <DropdownMenu right>
-                            <DropdownItem>
-                                Option 1
-                </DropdownItem>
-                            <DropdownItem>
-                                Option 2
-                </DropdownItem>
-                            <DropdownItem divider />
-                            <DropdownItem>
-                                logout
-                </DropdownItem>
-                        </DropdownMenu>
-                    </UncontrolledDropdown> */}
+
                 </Collapse>
             </Navbar>
         </div>
     );
 }
 
-export default Confused;
+const mapStatetoProps = (state) => {
+    return {
+        username: state.user.username,
+        role: state.user.role
+    }
+}
+
+export default connect(mapStatetoProps, { logout })(Navabar);
