@@ -5,6 +5,7 @@ import nothome from "./pages/nothome"
 import Navbar from "./components/navbar"
 import carousel from "./pages/carousel"
 import Login from "./pages/login"
+import Register from "./pages/register"
 
 class App extends Component {
 
@@ -16,6 +17,7 @@ class App extends Component {
         <Route path="/not-home" component={nothome} exact />
         <Route path="/carousel" component={carousel} exact />
         <Route path="/login" component={Login} exact />
+        <Route path="/register" component={Register} exact />
       </div>
     )
   }

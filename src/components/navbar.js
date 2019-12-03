@@ -42,19 +42,52 @@ const Navabar = (props) => {
                                     <DropdownMenu right>
                                         <DropdownItem onClick={props.logout}>
                                             Log Out
-                            </DropdownItem>
+                                    </DropdownItem>
+                                        <DropdownItem divider />
+                                        <DropdownItem>
+                                            <Link to='/'>
+                                                home
+                                            </Link>
+                                        </DropdownItem>
+                                        <DropdownItem>
+                                            <Link to='/not-home'>
+                                                not home
+                                            </Link>
+                                        </DropdownItem>
+                                        <DropdownItem>
+                                            <Link to='/carousel'>
+                                                carousel
+                                            </Link>
+                                        </DropdownItem>
                                     </DropdownMenu>
                                     :
                                     <DropdownMenu right>
-                                        <Link to='/login'>
-                                            <DropdownItem>
+                                        <DropdownItem>
+                                            <Link to='/login'>
                                                 Login
-                            </DropdownItem>
-                                        </Link>
+                                            </Link>
+                                        </DropdownItem>
+                                        <DropdownItem>
+                                            <Link to='/'>
+                                                home
+                                            </Link>
+                                        </DropdownItem>
+                                        <DropdownItem>
+                                            <Link to='/not-home'>
+                                                not home
+                                            </Link>
+                                        </DropdownItem>
+                                        <DropdownItem>
+                                            <Link to='/carousel'>
+                                                carousel
+                                            </Link>
+                                        </DropdownItem>
                                         <DropdownItem divider />
                                         <DropdownItem>
-                                            Register
-                            </DropdownItem>
+                                            <Link to="/register">
+                                                Register
+                                            </Link>
+                                        </DropdownItem>
                                     </DropdownMenu>
                             }
                         </UncontrolledDropdown>
@@ -74,7 +107,7 @@ const Navabar = (props) => {
 
                 </Collapse>
             </Navbar>
-        </div>
+        </div >
     );
 }
 
