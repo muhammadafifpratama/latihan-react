@@ -9,7 +9,7 @@ const Kartu = (props) => {
             <Card body style={{ padding: '50px', width: '300px' }}>
                 <CardTitle>{props.contoh}</CardTitle>
                 <CardText>{props.contoh2}</CardText>
-                <CardText>{props.contoh3}</CardText>
+                <CardText><img src={props.contoh3} alt='products' style={{ width: '100px', objectFit: 'cover', height: '100px' }} /></CardText>
             </Card>
         </div>
     );

@@ -16,8 +16,6 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { logout } from '../redux/action'
 
-
-
 const Navabar = (props) => {
     const [isopen, setisopen] = useState(false);
 
@@ -40,9 +38,18 @@ const Navabar = (props) => {
                                 props.role
                                     ?
                                     <DropdownMenu right>
-                                        <DropdownItem onClick={props.logout}>
-                                            Log Out
-                                    </DropdownItem>
+                                        <Link to='/login'>
+                                            <DropdownItem onClick={props.logout}>
+
+                                                Logout
+                                            </DropdownItem>
+                                        </Link>
+                                        <link to="/ganti">
+                                            <DropdownItem >
+
+                                                Ganti password
+                                            </DropdownItem>
+                                        </link>
                                         <DropdownItem divider />
                                         <DropdownItem>
                                             <Link to='/'>

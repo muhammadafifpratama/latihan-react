@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { Button, Input } from 'reactstrap'
 import Axios from 'axios'
-import { add, minus, login } from '../redux/action'
+import { login } from '../redux/action'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 
@@ -12,10 +12,10 @@ class Register extends Component {
         let password = this.pass.value;
         console.log(username)
         console.log(password)
-        Axios.get(`http://localhost:2000/Login?username=${username}&password=${password}`)
+        Axios.get(`http://localhost:2000/Login?username=${username}`)
             .then((res) => {
                 if (res.data.length !== 0) {
-                    return alert("username sudah ada ")
+                    alert("username sudah ada ")
                 }
                 else {
                     Axios.post('http://localhost:2000/login', {
@@ -23,6 +23,9 @@ class Register extends Component {
                         password: password,
                         role: "user"
                     })
+                        .then((res) => {
+                            this.props.login(res.data)
+                        })
                 }
             })
         // Axios.post('http://localhost:2000/login', {
@@ -79,4 +82,4 @@ const mapStatetoProps = (state) => {
     }
 }
 
-export default connect(mapStatetoProps, { add, minus, login })(Register)
+export default connect(mapStatetoProps, { login })(Register)

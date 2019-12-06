@@ -13,7 +13,7 @@ class App extends Component {
     return (
       <div>
         <Navbar />
-        <Route path="./src/pages/home" component={home} exact />
+        <Route path="/" component={home} exact />
         <Route path="/not-home" component={nothome} exact />
         <Route path="/carousel" component={carousel} exact />
         <Route path="/login" component={Login} exact />
